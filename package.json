@@ -1,0 +1,21 @@
+{
+  "name": "t5-project",
+  "version": "1.0.0",
+  "scripts": {
+
+    "docker:dev": "npm run docker:down && docker-compose -f docker-compose-dev.yml up --build",
+    "docker:test": "docker-compose -f docker-compose-tests.yml run node_app npm run test",
+
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+
+    "db:generate": "cd back-end && npm run createdb:tests && npm run createdb:dev",
+    "db:generate:win": "cd back-end && npm run createdb:tests:win && npm run createdb:dev:win",
+
+    "api:test": "cd back-end && npm run test",
+    "api:test:win": "cd back-end && npm run test:win",
+
+    "dev:front": "cd front-end && npm run dev",
+    "dev:back": "cd back-end && npm run dev"
+  }
+}
