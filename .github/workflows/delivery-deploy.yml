@@ -34,7 +34,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
 
         with:
-          envkey_VITE_TESTE: ${{ secrets.TEST_FRONT }}
+          envkey_VITE_TESTE: ${{ secrets.VITE_TESTE }}
           directory: front-end/
           file_name: .env
           fail_on_empty: true
@@ -42,8 +42,5 @@ jobs:
       - name: Stop Docker Containers
         run: docker-compose down
 
-      - name: Build Docker Containers
-        run: docker-compose build
-
-      - name: Start Docker Containers
-        run: docker-compose up -d
+      - name: Build and Start Docker Containers
+        run: docker-compose up --build -d

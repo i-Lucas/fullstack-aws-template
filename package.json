@@ -4,8 +4,9 @@
   "scripts": {
 
     "docker:dev": "npm run docker:down && docker-compose -f docker-compose-dev.yml up --build",
-    "docker:test": "docker-compose -f docker-compose-tests.yml run node_app npm run test",
+    "docker:test": "npm run docker:pretest && docker-compose -f docker-compose-tests.yml run node_app npm run test",
 
+    "docker:pretest": "docker-compose down && docker-compose build",
     "docker:down": "docker-compose down",
     "docker:build": "docker-compose build",
 

@@ -1,15 +1,20 @@
+import pkg from "@prisma/client";
 import supertest from "supertest";
 import app from "../src/app.js";
-import prisma from "../src/config/db.js";
 
+const { PrismaClient } = pkg;
+const prisma = new PrismaClient();
+
+/*
 beforeAll(async () => {
-    // await prisma.$executeRaw`TRUNCATE TABLE users CASCADE;`;
+    await prisma.$executeRaw`TRUNCATE TABLE users CASCADE;`;
 });
+*/
 
-describe('testando o teste', () => {
+describe('get hello test', () => {
 
-    it('signup valid -> status 200', async () => {
-        const response = await supertest(app).get('/hello')
+    it('should return status 200', async () => {
+        const response = await supertest(app).get('/hello').send();
         expect(response.status).toEqual(200);
     });
 });
